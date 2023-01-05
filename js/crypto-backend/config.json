@@ -1,0 +1,19 @@
+﻿{
+    "database": {
+        "host": "localhost",
+        "port": 3306,
+        "user": "jlaboll",
+        "password": "cryptocurrency",
+        "database": "node-mysql-signup-verification-api"
+    },
+    "secret": "the hedgehog narwalls at midnight",
+    "emailFrom": "verify@hedgehomecloud.com",
+    "smtpOptions": {
+        "host": "smtp.ethereal.email",
+        "port": 587,
+        "auth": {
+            "user": "sid.homenick31@ethereal.email",
+            "pass": "JsUmxYtP6GKyZqab8T"
+        }
+    }
+}

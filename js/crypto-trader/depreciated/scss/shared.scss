@@ -1,0 +1,13 @@
+$theme-colors: (
+        "highlight": #CCB114,
+        "second": #153243,
+        "main": #284B63,
+        "main-bg": #E7ECEF,
+        "second-bg": #86BBBD
+);
+
+@function theme-color($key: "primary") {
+  @return map-get($theme-colors, $key);
+}
+
+@import "../../node_modules/bootstrap/scss/bootstrap";

@@ -1,0 +1,5 @@
+include ':jsoup-1.13.1'
+include ':quick-json-1.0.2.3'
+include ':json-20200518'
+include ':app'
+rootProject.name = "Quizzer"

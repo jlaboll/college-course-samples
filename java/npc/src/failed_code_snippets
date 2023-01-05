@@ -1,0 +1,201 @@
+//
+//        public void printSubs(){
+//            for(ArrayList<Integer> i: subsets){
+//                System.out.println(i);
+//            }
+//        }
+//        public boolean findLargestClique() {
+//            for (ArrayList<Integer> i : subsets) {
+//                if (i.size() > cliqueSize) {
+//                    if (performChecks(i)) {
+//                        cliqueSize = i.size();
+//                        clique = i;
+//                        return true;
+//                    }
+//                }
+//            }
+//            return false;
+//        }
+//
+//        public void allSubsets(){
+//            int largest = 0;
+//            for(int i:vertexDegrees){
+//                if(i>largest) largest = i;
+//            }
+//
+//            while(!tryLargest(largest)){
+//                largest --;
+//            }
+//
+//            int[] arr = new int[set.size()];
+//            for(int i = 0; i<arr.length;i++){
+//                arr[i] = set.get(i);
+//            }
+//            for(int i = largest+1; i>0; i--){
+//                getSpecificSubset(arr, arr.length, i, 0, new int[i], 0);
+//                if(findLargestClique()) return;
+//            }
+//        }
+//
+//        public boolean tryLargest(int largest){
+//            //System.out.println(largest);
+//            int count = 0;
+//            for(int i: vertexDegrees){
+//                if(i >= largest){
+//                    count++;
+//                }
+//            }
+//            //System.out.println(count);
+//            return count >= largest;
+//        }
+//
+//        public void getSpecificSubset(int[] arr, int n, int r, int index, int[] data, int i){
+//            if(index == r){
+//                ArrayList<Integer> temp = new ArrayList<Integer>();
+//                for(int p:data){
+//                    temp.add(p);
+//                }
+//                subsets.add(temp);
+//                return;
+//            }
+//            if(i>=n)
+//                return;
+//
+//            if(vertexDegrees[i] >= r) {
+//                data[index] = arr[i];
+//                getSpecificSubset(arr, n, r, index + 1, data, i + 1);
+//                getSpecificSubset(arr, n, r, index, data, i + 1);
+//            }
+//            else{
+//                getSpecificSubset(arr, n, r, index, data, i + 1);
+//            }
+//        }
+//
+//        public boolean performChecks(ArrayList<Integer> subset){
+//            return check(0, subset, edges.get(subset.get(0)));
+//        }
+//
+//        public boolean check(int index, ArrayList<Integer> subset, ArrayList<Integer> nodeEdges){
+//            if(index == subset.size()){
+//                return true;
+//            }
+//            for (int i : subset) {
+//                if (!nodeEdges.contains(i)) {
+//                        return false;
+//                }
+//            }
+//            return check(index+1, subset, edges.get(subset.get(index)));
+//        }
+//
+//        public void countNumVertAtDeg(int degree){
+//            int count = 0;
+//            for(int i:vertexDegrees){
+//                if(i == degree){
+//                    count++;
+//                }
+//            }
+//            if(count < degree){
+//                ArrayList<Integer> removeMe = new ArrayList<>();
+//                for(int i = 0; i<vertexDegrees.length; i++){
+//                    if (vertexDegrees[i] == degree){
+//                        removeMe.add(i);
+//                    }
+//                }
+//            }
+//
+//        }
+//
+//        public void performRefactors(ArrayList<Integer> removals){
+//            if(removals.isEmpty()){
+//                for(int i = 0; i<adjMatrix.length;i++){
+//                    for(int j = 0; j< adjMatrix.length; j++){
+//                        vertexDegrees[i] += adjMatrix
+//                    }
+//                }
+//            }
+//        }
+//
+//        public int[][] refactor(int nodeToRemove){
+//            int boostI =0, boostJ =0;
+//            int[][] newAdjMatrix = new int[adjMatrix.length][adjMatrix.length];
+//            for(int i = 0; i< newAdjMatrix.length; i++){
+//                for(int j = 0; j<newAdjMatrix[i].length; j++){
+//                    if(i == nodeToRemove){
+//                        boostI = 1;
+//                    }
+//                    if(j == nodeToRemove){
+//                        boostJ = 1;
+//                    }
+//                    newAdjMatrix[i][j] = adjMatrix[i+boostI][j+boostJ];
+//                }
+//                boostJ=0;
+//            }
+//            return newAdjMatrix;
+//        }
+
+//        public void subsetBuilder(){
+//            ArrayList<Integer> sub = new ArrayList<>();
+//            for(int i = v-1; i>= 0; i--){
+//                for(int j = 0; j<v; j++){
+//                    if(vertexDegrees[j] >= i){
+//                        sub.add(j);
+//                    }
+//                }
+//                if(!sub.isEmpty() && sub.size() >= i) {
+//                    altSubsetBuilder(new ArrayDeque<>(), new ArrayList<>(sub), 0);
+//                }
+//                sub = new ArrayList<>();
+//            }
+//        }
+//
+//        public void method(int degree, int[] nodes){
+//            int count = 0;
+//            for(int i : nodes){
+//                if(i == degree){
+//                    count++;
+//                }
+//            }
+//            if(count >= degree){
+//                ArrayList<Integer> temp = new ArrayList<>();
+//                for(int i= 0; i<nodes.length;i++){
+//                    if(nodes[i] == degree){
+//                        temp.add(i);
+//                    }
+//                }
+//                altSubsetBuilder(new ArrayDeque<>(), temp, degree);
+//            }
+//            else{
+//                for(int i = 0; i<adjMatrix.length; i++){
+//                    if(nodes[i] == degree){
+//                        for(int j = 0; j<adjMatrix.length;j++){
+//                            adjMatrix[i][j] = 0;
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//
+//        public void altSubsetBuilder(Deque<Integer> list, ArrayList<Integer> set, int i) {
+//            if(i >= set.size()-1 && (list.size()*list.size()-1)/2 <= e){
+//                ArrayList<Integer> temp= new ArrayList<>();
+//                temp.addAll(list);
+//                subsets.add(temp);
+//            }
+//            if(i < set.size() && (list.size()*list.size()-1)/2 <= e) {
+//                list.addFirst(set.get(i));
+//                altSubsetBuilder(list, set, i + 1);
+//                list.pollFirst();
+//                altSubsetBuilder(list, set, i + 1);
+//            }
+//        }
+//
+//        public boolean searchSubgraph(ArrayList<Integer> subset) {
+//            for (int i : subset) {
+//                for (int j : subset) {
+//                    if (adjMatrix[i][j] != 1) {
+//                        return false;
+//                    }
+//                }
+//            }
+//            return true;
+//        }
