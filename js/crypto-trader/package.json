@@ -17,7 +17,7 @@
         "@bit/lekanmedia.shared-ui.spinner": "^0.0.2",
         "@bit/nexxtway.react-rainbow.button": "^1.10.0",
         "@bit/react-bootstrap.react-bootstrap.dropdown": "^1.0.0",
-        "axios": "^0.21.0",
+        "axios": "^1.6.0",
         "babel-preset-react": "^6.24.1",
         "file-loader": "^6.2.0",
         "formik": "^2.1.4",
